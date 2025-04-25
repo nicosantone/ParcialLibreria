@@ -33,5 +33,6 @@ public class Empleado extends Usuario {
 
 	public void setSueldo(double sueldo) {
 		this.sueldo = sueldo;
+		
 	}
 }

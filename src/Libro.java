@@ -18,6 +18,10 @@ public class Libro {
 		this.disponibilidad = disponibilidad;
 	}
 
+//	public Libro(String nombre2, String autor2, String editorial2, int i, String categoria2, boolean disponibilidad2) {
+//		// TODO Auto-generated constructor stub
+//	}
+
 	public String getNombre() {
 		return nombre;
 	}
