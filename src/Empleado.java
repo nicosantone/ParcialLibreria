@@ -1,3 +1,7 @@
+import java.util.Iterator;
+import java.util.LinkedList;
+
+import javax.swing.JOptionPane;
 
 public class Empleado extends Usuario {
 	private String legajo;
@@ -33,5 +37,25 @@ public class Empleado extends Usuario {
 
 	public void setSueldo(double sueldo) {
 		this.sueldo = sueldo;
+
+	}
+	
+	public void VenderLibro(LinkedList<Libro> libros) {
+		String[] nombres = new String[libros.size()];
+		
+		for (int i = 0; i < libros.size(); i++) {
+			JOptionPane.showMessageDialog(null, libros.get(i).getNombre());
+			nombres[i] = libros.get(i).getNombre();
+		}
+		
+		Object opcion = JOptionPane.showInputDialog(null,"Seleccione Un Libro para vender",
+				   "Libros", JOptionPane.QUESTION_MESSAGE, null,
+				   nombres, nombres[0]);
+		
+		JOptionPane.showMessageDialog(null, opcion);
+		
+		
+		
+	
 	}
 }
