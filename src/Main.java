@@ -16,7 +16,10 @@ public class Main {
         
 		Gerente gerente = new Gerente("Lucas", "Martínez", "lucas@gmail.com", "1234", "12345678", "Ventas", 250000);
 		Empleado empleado = new Empleado("Lucas", "Martínez", "lucas@gmail.com", "1234", "12345678", "legajo", "turno", 20000);
-		empleado.VenderLibro(libros);
+		
+		empleado.MenuPrincipal(libros);
+		
+		
 		gerente.registrarLibros(libros);
 		
         gerente.eliminarLibrosSinStock(libros);

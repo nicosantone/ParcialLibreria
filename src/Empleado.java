@@ -58,4 +58,26 @@ public class Empleado extends Usuario {
 		
 	
 	}
+	
+	public void MenuPrincipal(LinkedList<Libro> libros){
+		int opcion;
+		do {
+		opcion = JOptionPane.showOptionDialog(null, "Bienvenido empleado!", "Opciones", 0, 0, null, MenuEmpleado.values(), MenuEmpleado.values());
+		
+		switch (opcion) {
+		case 0:
+			//Lista
+			JOptionPane.showMessageDialog(null, "Mostrar Lista de libros");
+			break;
+			
+		case 1:
+			//Vender
+			VenderLibro(libros);
+
+		default:
+			break;
+		} 
+		
+		}while(opcion != 2);
+		}
 }
