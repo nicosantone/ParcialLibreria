@@ -2,7 +2,6 @@ import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
-
 public class Gerente extends Usuario {
 	private String area;
 	private double sueldo;
@@ -76,5 +75,4 @@ public class Gerente extends Usuario {
 	
 
 }
-
 }
