@@ -3,7 +3,7 @@ import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
-public class Empleado extends Usuario {
+public class Empleado extends Usuario implements Validacion {
 	private String legajo;
     private String turno;
     private double sueldo;
@@ -40,11 +40,24 @@ public class Empleado extends Usuario {
 
 	}
 	
+	public boolean Login() {
+		String mail;
+		String contra;
+		mail = JOptionPane.showInputDialog("Inserte email");
+		contra = JOptionPane.showInputDialog("Inserte contraseña");
+		if (ValidarEmail(mail) && this.getEmail().equals(mail) && this.getContrasena().equals(contra)) {
+			JOptionPane.showMessageDialog(null, "Logueado");
+			return true;
+		} else {
+			JOptionPane.showMessageDialog(null, "No logueado");
+			return false;
+		}
+	}
+	
 	public void VenderLibro(LinkedList<Libro> libros) {
 		String[] nombres = new String[libros.size()];
 		
 		for (int i = 0; i < libros.size(); i++) {
-			JOptionPane.showMessageDialog(null, libros.get(i).getNombre());
 			nombres[i] = libros.get(i).getNombre();
 		}
 		
@@ -55,7 +68,7 @@ public class Empleado extends Usuario {
 		JOptionPane.showMessageDialog(null, opcion);
 		
 		
-		
+	
 	
 	}
 	
