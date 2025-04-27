@@ -48,7 +48,7 @@ public class Empleado extends Usuario {
 			nombres[i] = libros.get(i).getNombre();
 		}
 		
-		Object opcion = JOptionPane.showInputDialog(null,"Seleccione Un Libro para vender",
+		String opcion = (String) JOptionPane.showInputDialog(null,"Seleccione Un Libro para vender",
 				   "Libros", JOptionPane.QUESTION_MESSAGE, null,
 				   nombres, nombres[0]);
 		
