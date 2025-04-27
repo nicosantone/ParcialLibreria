@@ -13,6 +13,40 @@ public class Main {
 
         Gerente gerente = new Gerente("Nicolás", "Santone", "nicolas.santone@libreria.com", "admin123", "12345678", "Administración", 150000);
 
+        boolean logueado = false;
+        int intentos = 0;
+
+        while (!logueado && intentos < 3) {
+            String nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
+            if (nombre == null) System.exit(0);
+
+            String apellido = JOptionPane.showInputDialog("Ingrese su apellido:");
+            if (apellido == null) System.exit(0);
+
+            String email = JOptionPane.showInputDialog("Ingrese su email:");
+            if (email == null) System.exit(0);
+
+            String contrasena = JOptionPane.showInputDialog("Ingrese su contraseña:");
+            if (contrasena == null) System.exit(0);
+
+            if (nombre.equalsIgnoreCase(gerente.getNombre()) &&
+                apellido.equalsIgnoreCase(gerente.getApellido()) &&
+                email.equalsIgnoreCase(gerente.getEmail()) &&
+                contrasena.equals(gerente.getContrasena())) {
+
+                logueado = true;
+                JOptionPane.showMessageDialog(null, "¡Inicio de sesión exitoso! Bienvenido " + gerente.getNombre() + ".");
+            } else {
+                intentos++;
+                JOptionPane.showMessageDialog(null, "Datos incorrectos. Intento " + intentos + " de 3.");
+            }
+        }
+
+        if (!logueado) {
+            JOptionPane.showMessageDialog(null, "Llegaste al límite de intentos posibles. Cerrando sistema...");
+            System.exit(0);
+        }
+
         boolean seguir = true;
 
         while (seguir) {
@@ -48,6 +82,4 @@ public class Main {
             }
         }
     }
-	
-	
 }
