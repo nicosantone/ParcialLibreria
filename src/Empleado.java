@@ -44,7 +44,7 @@ public class Empleado extends Usuario implements Validacion {
 		String contra;
 		mail = JOptionPane.showInputDialog("Inserte email");
 		contra = JOptionPane.showInputDialog("Inserte contraseña");
-		if (ValidarEmail(mail) && this.getEmail().equals(mail) && this.getContrasena().equals(contra)) {
+		if (ValidarEmail(mail) && this.getEmail().equalsIgnoreCase(mail) && this.getContrasena().equals(contra)) {
 			JOptionPane.showMessageDialog(null, "Logueado");
 			return true;
 		} else {
