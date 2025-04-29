@@ -1,9 +1,14 @@
 import javax.swing.JOptionPane;
+
+import java.time.LocalDate;
 import java.util.LinkedList;
 public class Main {
 
 	public static void main(String[] args) {
+		LinkedList<Venta> ventas = new LinkedList<>();
 		LinkedList<Libro> libros = new LinkedList<>();
+		
+		Venta venta = new Venta(LocalDate.now(), 0.0, "");
 		libros.add(new Libro("Cien Años de Soledad", "Gabriel García Marquez", "Planeta", 30000.0, "Clasicos", true));
 		libros.add(new Libro("Saga Harry Potter", "JK Rowling", "Bloomsbury Publishing", 100000.0, "Ficción", true));
 		libros.add(new Libro("We Were Liars", "Emily Lockhart", "Blue Salamandra", 20000.0, "Romance juvenil", true));
@@ -85,7 +90,7 @@ public class Main {
 			
 		} else if (seleccionUsuario.equals("Empleado")) {
 			if (empleado.Login()) {
-				empleado.MenuPrincipal(libros);
+				empleado.MenuPrincipal(libros, ventas, venta);
 			} else {
 				JOptionPane.showMessageDialog(null, "No se pudo iniciar sesión. Cerrando sistema...");
 				System.exit(0);
