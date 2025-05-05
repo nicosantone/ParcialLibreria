@@ -1,10 +1,11 @@
-
 public class Usuario {
 	private String nombre;
 	private String apellido;
 	private String email;
 	private String contrasena;
 	private String dni;
+    private static Connection con = Conexion.getInstance().getConnection();
+
 	
 	public Usuario(String nombre, String apellido, String email, String contrasena, String dni) {
 		super();
@@ -53,6 +54,10 @@ public class Usuario {
 
 	public void setDni(String dni) {
 		this.dni = dni;
+	}
+    
+	public void Registrar(Usuario nuevo) {
+		
 	}
 	
 }
