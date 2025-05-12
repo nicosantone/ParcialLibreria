@@ -9,11 +9,12 @@ public class Empleado extends Usuario implements Validacion {
     private String turno;
     private double sueldo;
 	
-	public Empleado(String nombre, String apellido, String email, String contrasena, String dni, String legajo, String turno, double sueldo) {
-        super(nombre, apellido, email, contrasena, dni);
-        this.legajo = legajo;
-        this.turno = turno;
-        this.sueldo = sueldo;
+	public Empleado(int id, String nombre, String apellido, String email, String contrasena, String dni, String tipo,
+			String legajo, String turno, double sueldo) {
+		super(id, nombre, apellido, email, contrasena, dni, tipo);
+		this.legajo = legajo;
+		this.turno = turno;
+		this.sueldo = sueldo;
 	}
 
 	public String getLegajo() {
