@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
-public class Usuario {
+public class Usuario implements Encriptador {
 	private int id;
 	private String nombre;
 	private String apellido;
@@ -25,6 +25,10 @@ public class Usuario {
 		this.contrasena = contrasena;
 		this.dni = dni;
 		this.tipo = tipo;
+	}
+
+	public Usuario() {
+		
 	}
 
 	public String getNombre() {
@@ -84,16 +88,58 @@ public class Usuario {
 	}
 
 	public static void RegistrarUsuario(Usuario nuevo) {
-		LinkedList<Usuario> usuariosExistentes = MostrarUsuarios();
+LinkedList<Usuario> usuariosExistentes = MostrarUsuarios();
 		
+		//ESTO SE CAMBIARA!!!!! EL REGISTRO NO FUNCIONA COMPLETOOO!!!!!
+		String nombre = "";
+		String apellido = "";
+		String email = "";
+		String contra = "";
+		String dni = "";
+		nuevo.setNombre(JOptionPane.showInputDialog("nombre", nombre));
+		nuevo.setApellido(JOptionPane.showInputDialog("apellido", apellido));    
+		nuevo.setEmail(JOptionPane.showInputDialog("Email", email));    
+		nuevo.setContrasena(JOptionPane.showInputDialog("Contra", contra));
+		nuevo.setDni(JOptionPane.showInputDialog("DNI", dni));
+		nuevo.setTipo("Empleado");
+		boolean flag = true;
 		for (Usuario existentes : usuariosExistentes) {
 			if (existentes.getEmail().equals(nuevo.email)) {
 				JOptionPane.showMessageDialog(null, "Ya hay un usuario creado con este email, intenta de nuevo.");
-				return;
+				flag=false;
 			}
-			
+		}
+		if (flag==true) {
 			AgregarUsuario(nuevo);
 		}
+	}
+	
+	public static Usuario login(String mail, String contra) {
+		Usuario usuario = new Usuario(); 
+		try {
+			PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuario WHERE email = ? AND contrasena = ?");
+			stmt.setString(1, mail);
+			stmt.setString(2, usuario.encriptar(contra));
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				int id = rs.getInt("id");
+				String nombre = rs.getString("nombre");
+				String apellido = rs.getString("apellido");
+				String email = rs.getString("email");
+				String contrasena = rs.getString("contrasena");
+				String dni = rs.getString("dni");
+				String tipo = rs.getString("tipo");
+				
+
+				usuario = new Usuario(id, nombre, apellido, email, usuario.desencriptar(contrasena), dni, tipo);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return usuario;
 	}
 	
 	public static LinkedList<Usuario> MostrarUsuarios() {
@@ -129,7 +175,7 @@ public class Usuario {
 			statement.setString(1, usuario.getNombre());
 			statement.setString(2, usuario.getApellido());
 			statement.setString(3, usuario.getEmail());
-			statement.setString(4, usuario.getContrasena());
+			statement.setString(4, usuario.encriptar(usuario.getContrasena()));
 			statement.setString(5, usuario.getDni());
 			statement.setString(6, usuario.getTipo());
 			
