@@ -96,8 +96,6 @@ public class Usuario implements Encriptador {
 			JOptionPane.showMessageDialog(null, "Hubo un error");
 			return null;
 		}else {
-		
-			
 			return ControllerUsuario.login(mail, contra);
 		}
 		
