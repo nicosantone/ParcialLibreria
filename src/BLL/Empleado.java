@@ -1,8 +1,11 @@
+package BLL;
 import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
+
+import REPOSITORY.Validacion;
 
 public class Empleado extends Usuario implements Validacion {
 	private String legajo;

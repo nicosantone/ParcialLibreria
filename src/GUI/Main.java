@@ -1,6 +1,11 @@
+package GUI;
 
 
 import javax.swing.JOptionPane;
+
+import BLL.Libro;
+import BLL.Usuario;
+import BLL.Venta;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -40,13 +45,19 @@ public class Main {
 			}
 		
 		if (seleccionLogin.equals("Login")) {
-			Usuario Loguearse = new Usuario();
+			
 			String email = "";
 			String contra = "";
 			
-			Loguearse.setEmail(JOptionPane.showInputDialog("Ingresar Email", email));
-			Loguearse.setContrasena(JOptionPane.showInputDialog("Ingresar Contraseña", contra));
-				Usuario.login(Loguearse.getEmail(), Loguearse.getContrasena());
+			JOptionPane.showInputDialog("Ingresar Email", email);
+			JOptionPane.showInputDialog("Ingresar Contraseña", contra);
+				Usuario LoginUser = Usuario.login(email, contra);
+				if (LoginUser!=null) {
+					JOptionPane.showMessageDialog(null, "Logueado");
+				} else {
+					JOptionPane.showMessageDialog(null, "Email o Contraseña incorrectos");
+				}
+				
 				//
 			}
 		

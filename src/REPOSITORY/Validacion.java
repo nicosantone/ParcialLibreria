@@ -1,3 +1,4 @@
+package REPOSITORY;
 import javax.swing.JOptionPane;
 public interface Validacion {
 default boolean ValidarEmail(String email) {

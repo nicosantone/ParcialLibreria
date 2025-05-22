@@ -1,3 +1,4 @@
+package REPOSITORY;
 public interface Encriptador {
 	
 	default String encriptar(String texto) {
