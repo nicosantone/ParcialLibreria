@@ -92,11 +92,28 @@ public class Usuario implements Encriptador {
 	}
 
 	public static Usuario login(String mail, String contra) {
+		boolean flag = false;
+		JOptionPane.showMessageDialog(null, mail);
+		JOptionPane.showMessageDialog(null, contra);
 		if (mail.isEmpty() || contra.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Hubo un error");
 			return null;
 		}else {
-			return ControllerUsuario.login(mail, contra);
+			for (int i = 0; i < ControllerUsuario.MostrarUsuarios().size(); i++) {
+				if (ControllerUsuario.MostrarUsuarios().get(i).getEmail().contains(mail) & ControllerUsuario.MostrarUsuarios().get(i).getContrasena().contains(contra)) {
+					flag=true;
+					break;
+				} else {
+					flag=false;
+				}
+			}
+			
+			if (flag==true) {
+				return ControllerUsuario.login(mail, contra);
+			} else {
+				return null;
+			}
+			
 		}
 		
 	}

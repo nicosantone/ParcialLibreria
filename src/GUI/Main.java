@@ -49,11 +49,11 @@ public class Main {
 			String email = "";
 			String contra = "";
 			
-			JOptionPane.showInputDialog("Ingresar Email", email);
-			JOptionPane.showInputDialog("Ingresar Contraseña", contra);
+			email = JOptionPane.showInputDialog("Ingresar Email", email);
+			contra = JOptionPane.showInputDialog("Ingresar Contraseña", contra);
 				Usuario LoginUser = Usuario.login(email, contra);
 				if (LoginUser!=null) {
-					JOptionPane.showMessageDialog(null, "Logueado");
+					JOptionPane.showMessageDialog(null, "Logueado como: " + LoginUser.getNombre());
 				} else {
 					JOptionPane.showMessageDialog(null, "Email o Contraseña incorrectos");
 				}
