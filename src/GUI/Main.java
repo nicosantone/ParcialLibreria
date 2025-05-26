@@ -17,10 +17,10 @@ public class Main {
 		
 		
 		Venta venta = new Venta(LocalDate.now(), 0.0, "");
-		libros.add(new Libro("Cien Años de Soledad", "Gabriel García Marquez", "Planeta", 30000.0, "Clasicos", true));
-		libros.add(new Libro("Saga Harry Potter", "JK Rowling", "Bloomsbury Publishing", 100000.0, "Ficción", true));
-		libros.add(new Libro("We Were Liars", "Emily Lockhart", "Blue Salamandra", 20000.0, "Romance juvenil", true));
-		libros.add(new Libro("El Hombre Equivocado", "John Katzenbach", "Ediciones B", 30000.0, "Thriller psicológico", true));
+		libros.add(new Libro(1, "Cien Años de Soledad", "Gabriel García Marquez", "Planeta", 30000.0, "Clasicos", true));
+		libros.add(new Libro(2, "Saga Harry Potter", "JK Rowling", "Bloomsbury Publishing", 100000.0, "Ficción", true));
+		libros.add(new Libro(3, "We Were Liars", "Emily Lockhart", "Blue Salamandra", 20000.0, "Romance juvenil", true));
+		libros.add(new Libro(4, "El Hombre Equivocado", "John Katzenbach", "Ediciones B", 30000.0, "Thriller psicológico", true));
 		
 		Usuario usuario = new Usuario(0, "", "", "", "","", "");
 		

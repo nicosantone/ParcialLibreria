@@ -92,6 +92,8 @@ public class Gerente extends Usuario {
 
 	    // Agregar libro
 	    public void agregarLibro(LinkedList<Libro> libros) {
+	    	
+	    	int id = libros.getLast().getId() + 1;
 	        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del libro:");
 	        String autor = JOptionPane.showInputDialog("Ingrese el autor del libro:");
 	        String editorial = JOptionPane.showInputDialog("Ingrese la editorial:");
@@ -100,7 +102,7 @@ public class Gerente extends Usuario {
 	        String disponibleTexto = JOptionPane.showInputDialog("¿Está disponible? (si/no):");
 	        boolean disponibilidad = disponibleTexto.equalsIgnoreCase("si");
 
-	        Libro nuevoLibro = new Libro(nombre, autor, editorial, precio, categoria, disponibilidad);
+	        Libro nuevoLibro = new Libro(id, nombre, autor, editorial, precio, categoria, disponibilidad);
 	        libros.add(nuevoLibro);
 
 	        JOptionPane.showMessageDialog(null, "Libro agregado correctamente.");
