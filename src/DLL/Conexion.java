@@ -4,9 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
-
-import com.mysql.jdbc.Connection;
-
+import java.sql.Connection;
 public class Conexion {
 	private static String URL ="jdbc:mysql://localhost:3306/libreria";
 	private static String USER = "root";

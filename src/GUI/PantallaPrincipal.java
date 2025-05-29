@@ -5,8 +5,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
+
+import BLL.Usuario;
+import DLL.ControllerUsuario;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -15,9 +25,9 @@ public class PantallaPrincipal extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
-	private JButton btnNewButton;
+	private JTextField Email;
+	private JPasswordField Contraseña;
+	private JButton BotonLogin;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 
@@ -54,22 +64,38 @@ public class PantallaPrincipal extends JFrame {
 		lblNewLabel.setBounds(10, 11, 350, 35);
 		contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(0, 91, 123, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		Email = new JTextField();
+		Email.setBounds(0, 91, 123, 20);
+		contentPane.add(Email);
+		Email.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(0, 149, 123, 20);
-		contentPane.add(passwordField);
+		Contraseña = new JPasswordField();
+		Contraseña.setBounds(0, 149, 123, 20);
+		contentPane.add(Contraseña);
 		
-		btnNewButton = new JButton("LOGIN");
-		btnNewButton.setBounds(0, 194, 89, 23);
-		contentPane.add(btnNewButton);
+		BotonLogin = new JButton("LOGIN");
+		BotonLogin.setBounds(0, 194, 89, 23);
+		contentPane.add(BotonLogin);
+		BotonLogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Usuario logueado =  Usuario.login(Email.getText(),Contraseña.getText());
+				if (logueado == null) {
+					JOptionPane.showMessageDialog(null,"error");
+				} else {
+					sesion pantalla = new sesion(logueado);
+					pantalla.setVisible(true);
+					dispose();
+				}
+			}
+		});
+		
 		
 		lblNewLabel_1 = new JLabel("Introducir EMAIL.");
 		lblNewLabel_1.setBounds(0, 75, 123, 14);
 		contentPane.add(lblNewLabel_1);
+		
 		
 		lblNewLabel_2 = new JLabel("Introducir CONTRASEÑA.");
 		lblNewLabel_2.setBounds(0, 128, 146, 14);
