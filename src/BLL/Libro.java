@@ -81,4 +81,10 @@ public class Libro {
 	public void setDisponibilidad(boolean disponibilidad) {
 		this.disponibilidad = disponibilidad;
 	}
+	
+	@Override
+	public String toString() {
+		return "Libro [id=" + id + ", nombre=" + nombre + ", autor=" + autor + ", editorial=" + editorial + ", precio="
+				+ precio + ", categoria=" + categoria + ", disponibilidad=" + disponibilidad + "]";
+	}
 }

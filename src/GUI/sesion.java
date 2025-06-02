@@ -42,5 +42,16 @@ public class sesion extends JFrame {
 		});
 		btnNewButton.setBounds(24, 171, 89, 23);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Ver libros");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VistaLibros vista = new VistaLibros();
+				vista.setVisible(true);
+				dispose();
+			}
+		});
+		btnNewButton_1.setBounds(138, 171, 89, 23);
+		contentPane.add(btnNewButton_1);
 	}
 }
