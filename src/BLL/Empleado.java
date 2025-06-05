@@ -1,18 +1,23 @@
+package BLL;
+import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
+
+import REPOSITORY.Validacion;
 
 public class Empleado extends Usuario implements Validacion {
 	private String legajo;
     private String turno;
     private double sueldo;
 	
-	public Empleado(String nombre, String apellido, String email, String contrasena, String dni, String legajo, String turno, double sueldo) {
-        super(nombre, apellido, email, contrasena, dni);
-        this.legajo = legajo;
-        this.turno = turno;
-        this.sueldo = sueldo;
+	public Empleado(int id, String nombre, String apellido, String email, String contrasena, String dni, String tipo,
+			String legajo, String turno, double sueldo) {
+		super(id, nombre, apellido, email, contrasena, dni, tipo);
+		this.legajo = legajo;
+		this.turno = turno;
+		this.sueldo = sueldo;
 	}
 
 	public String getLegajo() {
@@ -44,34 +49,54 @@ public class Empleado extends Usuario implements Validacion {
 		String contra;
 		mail = JOptionPane.showInputDialog("Inserte email");
 		contra = JOptionPane.showInputDialog("Inserte contraseña");
-		if (this.getEmail().equalsIgnoreCase(mail) && this.getContrasena().equals(contra)) {
-	        JOptionPane.showMessageDialog(null, "Logueado");
-	        return true;
-	    } else {
-	        JOptionPane.showMessageDialog(null, "No logueado");
-	        return false;
-	    }
+		
+	
+		if (ValidarEmail(mail) && this.getEmail().equalsIgnoreCase(mail) && this.getContrasena().equals(contra)) {
+			JOptionPane.showMessageDialog(null, "Logueado");
+			return true;
+		} else {
+			JOptionPane.showMessageDialog(null, "No logueado");
+			return false;
+		}
 	}
 	
-	public void VenderLibro(LinkedList<Libro> libros) {
+	public void VenderLibro(LinkedList<Libro> libros, LinkedList<Venta> ventas, Venta registro) {
 		String[] nombres = new String[libros.size()];
-		
+		double LibroPrecio = 0;
 		for (int i = 0; i < libros.size(); i++) {
 			nombres[i] = libros.get(i).getNombre();
+			if (libros.get(i).getNombre().contains("Saga")) {
+			nombres[i] += " (20% de descuento)";
+			}
 		}
 		
 		String opcion = (String) JOptionPane.showInputDialog(null,"Seleccione Un Libro para vender",
 				   "Libros", JOptionPane.QUESTION_MESSAGE, null,
 				   nombres, nombres[0]);
 		
+		
 		JOptionPane.showMessageDialog(null, opcion);
 		
+		String DNI = JOptionPane.showInputDialog("Insertar el DNI Del cliente (No funcional)");
 		
+		registro.setClienteDNI(DNI);
+		registro.setFecha(LocalDate.now());
+		registro.setTotal(LibroPrecio);
+		
+		
+		ventas.add(registro);
+		
+		JOptionPane.showMessageDialog(null, ventas.getLast());
+		}
+		
+		public void ListaDeVentas(LinkedList<Venta> ventas) {
+			
+			JOptionPane.showMessageDialog(null, ventas);
+		
+		}
+
 	
-	
-	}
-	
-	public void MenuPrincipal(LinkedList<Libro> libros){
+	public void MenuPrincipal(LinkedList<Libro> libros, LinkedList<Venta> ventas, Venta registro){
 		int opcion;
 		do {
 		opcion = JOptionPane.showOptionDialog(null, "Bienvenido empleado!", "Opciones", 0, 0, null, MenuEmpleado.values(), MenuEmpleado.values());
@@ -84,12 +109,16 @@ public class Empleado extends Usuario implements Validacion {
 			
 		case 1:
 			//Vender
-			VenderLibro(libros);
+			VenderLibro(libros, ventas, registro);
+			
+		case 2:
+			//Vender
+			ListaDeVentas(ventas);;
 
 		default:
 			break;
 		} 
 		
-		}while(opcion != 2);
+		}while(opcion != 3);
 		}
 }
