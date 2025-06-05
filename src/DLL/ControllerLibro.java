@@ -35,4 +35,26 @@ public class ControllerLibro {
 		return libros;
 		
 	}
+	
+	public static void AgregarLibro(Libro libro) {
+		try {
+			PreparedStatement statement = con
+				
+					.prepareStatement("INSERT INTO libro (nombre, autor, editorial, precio, categoria, disponibilidad) VALUES (?, ?, ?, ?, ?, ?)");
+			statement.setString(1, libro.getNombre());
+			statement.setString(2, libro.getAutor());
+			statement.setString(3, libro.getEditorial());
+			statement.setDouble(4, libro.getPrecio());
+			statement.setString(5, libro.getCategoria());
+			statement.setBoolean(6, libro.isDisponibilidad());
+			
+			int filas = statement.executeUpdate();
+			if (filas > 0) {
+				System.out.println("Libro agregado correctamente.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		}	
 }
