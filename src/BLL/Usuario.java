@@ -122,16 +122,16 @@ public class Usuario implements Encriptador {
 		LinkedList<Usuario> usuariosExistentes = ControllerUsuario.MostrarUsuarios();
 				
 				//ESTO SE CAMBIARA!!!!! EL REGISTRO NO FUNCIONA COMPLETOOO!!!!!
-				String nombre = "";
-				String apellido = "";
-				String email = "";
-				String contra = "";
-				String dni = "";
-				nuevo.setNombre(JOptionPane.showInputDialog("nombre", nombre));
-				nuevo.setApellido(JOptionPane.showInputDialog("apellido", apellido));    
-				nuevo.setEmail(JOptionPane.showInputDialog("Email", email));    
-				nuevo.setContrasena(JOptionPane.showInputDialog("Contra", contra));
-				nuevo.setDni(JOptionPane.showInputDialog("DNI", dni));
+				//String nombre = "";
+				//String apellido = "";
+				//String email = "";
+				//String contra = "";
+				//String dni = "";
+				//nuevo.setNombre(JOptionPane.showInputDialog("nombre", nombre));
+				//nuevo.setApellido(JOptionPane.showInputDialog("apellido", apellido));    
+				//nuevo.setEmail(JOptionPane.showInputDialog("Email", email));    
+				//nuevo.setContrasena(JOptionPane.showInputDialog("Contra", contra));
+				//nuevo.setDni(JOptionPane.showInputDialog("DNI", dni));
 				nuevo.setTipo("Empleado");
 				boolean flag = true;
 				for (Usuario existentes : usuariosExistentes) {

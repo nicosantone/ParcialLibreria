@@ -100,5 +100,16 @@ public class PantallaPrincipal extends JFrame {
 		lblNewLabel_2 = new JLabel("Introducir CONTRASEÑA.");
 		lblNewLabel_2.setBounds(0, 128, 146, 14);
 		contentPane.add(lblNewLabel_2);
+		
+		JButton REGISTRO = new JButton("REGISTRAR");
+		REGISTRO.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistrarUsuario vista = new RegistrarUsuario();
+				vista.setVisible(true);
+				dispose();
+			}
+		});
+		REGISTRO.setBounds(99, 194, 89, 23);
+		contentPane.add(REGISTRO);
 	}
 }
