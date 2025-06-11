@@ -17,10 +17,12 @@ public class ControllerUsuario {
 	
 	public static Usuario login(String mail, String contra) {
 		Usuario usuario = new Usuario(); 
+		
+		String contraEncriptada = usuario.encriptar(contra);
 		try {
 			PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuario WHERE email = ? AND contrasena = ?");
 			stmt.setString(1, mail);
-			stmt.setString(2, usuario.encriptar(contra));
+			stmt.setString(2, contraEncriptada);
 
 			ResultSet rs = stmt.executeQuery();
 

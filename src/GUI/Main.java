@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import BLL.Libro;
 import BLL.Usuario;
 import BLL.Venta;
+import REPOSITORY.Encriptador;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -24,6 +25,9 @@ public class Main {
 		
 		Usuario usuario = new Usuario(0, "", "", "", "","", "");
 		
+		  
+		//JOptionPane.showMessageDialog(null, usuario.encriptar("1234"));
+		JOptionPane.showMessageDialog(null, usuario.desencriptar("defg"));
 		//Gerente gerente = new Gerente("Nicolás", "Santone", "nicolas.santone@libreria.com", "admin123", "12345678", "Administración", 150000);
 		//Empleado empleado = new Empleado("Juan", "Pérez", "juan.perez@libreria.com", "empleado123", "87654321", "E001", "Mañana", 80000);
 

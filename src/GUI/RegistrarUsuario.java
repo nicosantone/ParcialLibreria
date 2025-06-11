@@ -116,8 +116,12 @@ public class RegistrarUsuario extends JFrame {
 		btnRegistrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Usuario UsuarioRegistrandose = new Usuario(0, nombreUsuario.getText(), apellidoUsuario.getText(), emailUsuario.getText(), contrasenaUsuario.getText(), dniUsuario.getText(), "");
-				JOptionPane.showMessageDialog(null, UsuarioRegistrandose.getNombre());  
 				Usuario.RegistrarUsuario(UsuarioRegistrandose);
+				if(true) {
+				PantallaPrincipal vista = new PantallaPrincipal();
+				vista.setVisible(true);
+				dispose();
+				}
 				
 			}
 		});

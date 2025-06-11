@@ -109,7 +109,7 @@ public class PantallaPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		REGISTRO.setBounds(99, 194, 89, 23);
+		REGISTRO.setBounds(99, 194, 108, 23);
 		contentPane.add(REGISTRO);
 	}
 }

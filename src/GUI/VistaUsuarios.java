@@ -24,7 +24,8 @@ public class VistaUsuarios extends JFrame {
 
   
 
-    public VistaUsuarios() {
+    public VistaUsuarios(Usuario usuario) {
+    	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
         contentPane = new JPanel();
@@ -50,7 +51,9 @@ public class VistaUsuarios extends JFrame {
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 40, 760, 200);
         contentPane.add(scrollPane);
-
+        
+        if(usuario.getTipo().contains("Gerente")) {
+        	
         JButton btnAgregar = new JButton("Agregar");
         btnAgregar.setBounds(10, 270, 150, 40);
         contentPane.add(btnAgregar);
@@ -62,6 +65,8 @@ public class VistaUsuarios extends JFrame {
         JButton btnEliminar = new JButton("Eliminar");
         btnEliminar.setBounds(330, 270, 150, 40);
         contentPane.add(btnEliminar);
+        
+        }
 
         // Acción al seleccionar fila
         table.getSelectionModel().addListSelectionListener(e -> {
