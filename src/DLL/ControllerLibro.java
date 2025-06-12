@@ -34,7 +34,15 @@ public class ControllerLibro {
 		}
 		return libros;
 		
+		
+		
 	}
+	
+	public static void AgregarLibro(String nombre, String autor, String editorial, double precio, String categoria, boolean disponibilidad) {
+	    Libro libro = new Libro(0, nombre, autor, editorial, precio, categoria, disponibilidad);
+	    AgregarLibro(libro);
+	}
+
 	
 	public static void AgregarLibro(Libro libro) {
 		try {
