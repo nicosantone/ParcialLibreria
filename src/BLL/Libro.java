@@ -1,5 +1,7 @@
+package BLL;
 
 public class Libro {
+	private int id;
 	private String nombre;
     private String autor;
     private String editorial;
@@ -7,9 +9,10 @@ public class Libro {
     private String categoria;
     private boolean disponibilidad;
 	
-    public Libro(String nombre, String autor, String editorial, Double precio, String categoria,
+    public Libro(int id, String nombre, String autor, String editorial, Double precio, String categoria,
 			boolean disponibilidad) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.autor = autor;
 		this.editorial = editorial;
@@ -21,9 +24,18 @@ public class Libro {
 //	public Libro(String nombre2, String autor2, String editorial2, int i, String categoria2, boolean disponibilidad2) {
 //		// TODO Auto-generated constructor stub
 //	}
+    
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setNombre(String nombre) {
@@ -68,5 +80,11 @@ public class Libro {
 
 	public void setDisponibilidad(boolean disponibilidad) {
 		this.disponibilidad = disponibilidad;
+	}
+	
+	@Override
+	public String toString() {
+		return "Libro [id=" + id + ", nombre=" + nombre + ", autor=" + autor + ", editorial=" + editorial + ", precio="
+				+ precio + ", categoria=" + categoria + ", disponibilidad=" + disponibilidad + "]";
 	}
 }

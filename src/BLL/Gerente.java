@@ -1,3 +1,4 @@
+package BLL;
 import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
@@ -6,11 +7,12 @@ public class Gerente extends Usuario {
 	private String area;
 	private double sueldo;
 	
-	public Gerente(String nombre, String apellido, String email, String contrasena, String dni, String area, double sueldo) {
-        super(nombre, apellido, email, contrasena, dni);
-        this.area = area;
-        this.sueldo = sueldo;
-    }
+	public Gerente(int id, String nombre, String apellido, String email, String contrasena, String dni, String tipo,
+			String area, double sueldo) {
+		super(id, nombre, apellido, email, contrasena, dni, tipo);
+		this.area = area;
+		this.sueldo = sueldo;
+	}
 
 	public String getArea() {
 		return area;
@@ -90,6 +92,8 @@ public class Gerente extends Usuario {
 
 	    // Agregar libro
 	    public void agregarLibro(LinkedList<Libro> libros) {
+	    	
+	    	int id = libros.getLast().getId() + 1;
 	        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del libro:");
 	        String autor = JOptionPane.showInputDialog("Ingrese el autor del libro:");
 	        String editorial = JOptionPane.showInputDialog("Ingrese la editorial:");
@@ -98,7 +102,7 @@ public class Gerente extends Usuario {
 	        String disponibleTexto = JOptionPane.showInputDialog("¿Está disponible? (si/no):");
 	        boolean disponibilidad = disponibleTexto.equalsIgnoreCase("si");
 
-	        Libro nuevoLibro = new Libro(nombre, autor, editorial, precio, categoria, disponibilidad);
+	        Libro nuevoLibro = new Libro(id, nombre, autor, editorial, precio, categoria, disponibilidad);
 	        libros.add(nuevoLibro);
 
 	        JOptionPane.showMessageDialog(null, "Libro agregado correctamente.");
