@@ -106,7 +106,7 @@ public class PantallaPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				RegistrarUsuario vista = new RegistrarUsuario();
 				vista.setVisible(true);
-				dispose();
+				
 			}
 		});
 		REGISTRO.setBounds(99, 194, 108, 23);
