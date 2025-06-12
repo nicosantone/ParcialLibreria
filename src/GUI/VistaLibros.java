@@ -56,6 +56,15 @@ public class VistaLibros extends JFrame {
         JButton btnAgregar = new JButton("Agregar");
         btnAgregar.setBounds(10, 270, 150, 40);
         contentPane.add(btnAgregar);
+        btnAgregar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AgregarLibro agregar = new AgregarLibro();
+				agregar.setVisible(true);
+				
+			}
+		});
 
         JButton btnEditar = new JButton("Editar");
         btnEditar.setBounds(170, 270, 150, 40);
@@ -100,7 +109,7 @@ public class VistaLibros extends JFrame {
         btnfiltrar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		//cargarTablaFILTRAR(inpFiltro.getText());
+        		cargarTablaFILTRAR(inpFiltro.getText());
         		
         	}
         });
@@ -140,27 +149,28 @@ public class VistaLibros extends JFrame {
     		
         	}
     }
-//    }
-//    private void cargarTablaFILTRAR(String filtro) {
-//    	
-//    	
-//        model.setRowCount(0);
-//        LinkedList<Usuario> usuarios = DLLUsuario.mostrarUsuarios();
-//        for (Usuario usuario : usuarios) {
-//        	if(usuario.getNombre().toLowerCase().startsWith(
-//        			filtro.toLowerCase())
-//        			||
-//        			usuario.getNombre().contains(filtro)) {
-//            model.addRow(new Object[]{
-//            		usuario.getId(), 
-//            		usuario.getNombre(),
-//            		usuario.getEmail(), 
-//            		usuario.getTipo(),
-//            		usuario.getPassword()
-//            		}
-//            );
-//        	}
-//        }
-//    }
+    private void cargarTablaFILTRAR(String filtro) {
+    	
+    	
+    	model.setRowCount(0);
+        LinkedList<Libro> libro = ControllerLibro.MostrarLibros();
+        for (Libro libros: libro) {
+       	if(libros.getNombre().toLowerCase().startsWith(
+        			filtro.toLowerCase())
+       			||
+        			libros.getNombre().contains(filtro)) {
+           model.addRow(new Object[]{
+            		libros.getId(), 
+          		libros.getNombre(),
+            		libros.getAutor(), 
+            		libros.getEditorial(),
+           		libros.getPrecio(),
+           		libros.getCategoria(),
+           		libros.isDisponibilidad()
+           		}
+           );
+       	}
+       }
+  }
 }
 
