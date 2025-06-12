@@ -94,8 +94,8 @@ public class Usuario implements Encriptador, Validacion {
 
 	public static Usuario login(String mail, String contra) {
 		boolean flag = false;
-		JOptionPane.showMessageDialog(null, mail);
-		JOptionPane.showMessageDialog(null, contra);
+		//JOptionPane.showMessageDialog(null, mail);
+		//JOptionPane.showMessageDialog(null, contra);
 		if (mail.isEmpty() || contra.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Hubo un error");
 			return null;
