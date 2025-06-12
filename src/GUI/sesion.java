@@ -35,7 +35,7 @@ public class sesion extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				VistaUsuarios vista = new VistaUsuarios();
+				VistaUsuarios vista = new VistaUsuarios(usuario);
 				vista.setVisible(true);
 				dispose();
 			}

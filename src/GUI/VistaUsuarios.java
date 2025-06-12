@@ -24,7 +24,8 @@ public class VistaUsuarios extends JFrame {
 
   
 
-    public VistaUsuarios() {
+    public VistaUsuarios(Usuario usuario) {
+    	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
         contentPane = new JPanel();
@@ -50,18 +51,6 @@ public class VistaUsuarios extends JFrame {
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 40, 760, 200);
         contentPane.add(scrollPane);
-
-        JButton btnAgregar = new JButton("Agregar");
-        btnAgregar.setBounds(10, 270, 150, 40);
-        contentPane.add(btnAgregar);
-
-        JButton btnEditar = new JButton("Editar");
-        btnEditar.setBounds(170, 270, 150, 40);
-        contentPane.add(btnEditar);
-
-        JButton btnEliminar = new JButton("Eliminar");
-        btnEliminar.setBounds(330, 270, 150, 40);
-        contentPane.add(btnEliminar);
 
         // Acción al seleccionar fila
         table.getSelectionModel().addListSelectionListener(e -> {
@@ -98,7 +87,7 @@ public class VistaUsuarios extends JFrame {
         btnfiltrar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		
-        		//cargarTablaFILTRAR(inpFiltro.getText());
+        		cargarTablaFILTRAR(inpFiltro.getText());
         		
         	}
         });
@@ -137,26 +126,26 @@ public class VistaUsuarios extends JFrame {
     		
         	}
     }
-//    }
-//    private void cargarTablaFILTRAR(String filtro) {
-//    	
-//    	
-//        model.setRowCount(0);
-//        LinkedList<Usuario> usuarios = DLLUsuario.mostrarUsuarios();
-//        for (Usuario usuario : usuarios) {
-//        	if(usuario.getNombre().toLowerCase().startsWith(
-//        			filtro.toLowerCase())
-//        			||
-//        			usuario.getNombre().contains(filtro)) {
-//            model.addRow(new Object[]{
-//            		usuario.getId(), 
-//            		usuario.getNombre(),
-//            		usuario.getEmail(), 
-//            		usuario.getTipo(),
-//            		usuario.getPassword()
-//            		}
-//            );
-//        	}
-//        }
-//    }
+ 
+    private void cargarTablaFILTRAR(String filtro) {
+   	
+   	
+       model.setRowCount(0);
+        LinkedList<Usuario> usuarios = ControllerUsuario.MostrarUsuarios();
+        for (Usuario usuario : usuarios) {
+        	if(usuario.getNombre().toLowerCase().startsWith(
+        			filtro.toLowerCase())
+        			||
+        			usuario.getNombre().contains(filtro)) {
+           model.addRow(new Object[]{
+           		usuario.getId(), 
+           		usuario.getNombre(),
+           		usuario.getEmail(), 
+           		usuario.getTipo(),
+            		usuario.getContrasena()
+            		}
+           );
+       	}
+       }
+   }
 }

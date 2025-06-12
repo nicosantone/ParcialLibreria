@@ -9,8 +9,9 @@ import javax.swing.JOptionPane;
 import DLL.Conexion;
 import DLL.ControllerUsuario;
 import REPOSITORY.Encriptador;
+import REPOSITORY.Validacion;
 
-public class Usuario implements Encriptador {
+public class Usuario implements Encriptador, Validacion {
 	private int id;
 	private String nombre;
 	private String apellido;
@@ -93,8 +94,8 @@ public class Usuario implements Encriptador {
 
 	public static Usuario login(String mail, String contra) {
 		boolean flag = false;
-		JOptionPane.showMessageDialog(null, mail);
-		JOptionPane.showMessageDialog(null, contra);
+		//JOptionPane.showMessageDialog(null, mail);
+		//JOptionPane.showMessageDialog(null, contra);
 		if (mail.isEmpty() || contra.isEmpty()) {
 			JOptionPane.showMessageDialog(null, "Hubo un error");
 			return null;
@@ -120,29 +121,55 @@ public class Usuario implements Encriptador {
 
 	public static void RegistrarUsuario(Usuario nuevo) {
 		LinkedList<Usuario> usuariosExistentes = ControllerUsuario.MostrarUsuarios();
-				
-				//ESTO SE CAMBIARA!!!!! EL REGISTRO NO FUNCIONA COMPLETOOO!!!!!
-				String nombre = "";
-				String apellido = "";
-				String email = "";
-				String contra = "";
-				String dni = "";
-				nuevo.setNombre(JOptionPane.showInputDialog("nombre", nombre));
-				nuevo.setApellido(JOptionPane.showInputDialog("apellido", apellido));    
-				nuevo.setEmail(JOptionPane.showInputDialog("Email", email));    
-				nuevo.setContrasena(JOptionPane.showInputDialog("Contra", contra));
-				nuevo.setDni(JOptionPane.showInputDialog("DNI", dni));
 				nuevo.setTipo("Empleado");
 				boolean flag = true;
-				for (Usuario existentes : usuariosExistentes) {
-					if (existentes.getEmail().equals(nuevo.getEmail())) {
-						JOptionPane.showMessageDialog(null, "Ya hay un usuario creado con este email, intenta de nuevo.");
+				
+				
+				//Espacios vacios
+				if (nuevo.getNombre().isEmpty() ||  nuevo.getApellido().isEmpty() || nuevo.getEmail().isEmpty() ||  nuevo.getDni().isEmpty() || nuevo.getContrasena().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Hay espacios sin completar.");	
+					flag=false;
+				} 
+				
+				if(flag==true){
+					
+					//DNI tiene letras
+					for (int i = 0; i < nuevo.getDni().length(); i++) {
+						if(!Character.isDigit(nuevo.getDni().charAt(i))) {
+							JOptionPane.showMessageDialog(null, "Hay una letra en el DNI, solo puede haber numeros");	
+							flag=false;
+							break;
+						};
+					}
+					
+					//DNI no contiene 8 digitos
+					 if (nuevo.getDni().length()!=8) {
+						 JOptionPane.showMessageDialog(null, "El DNI debe contener 8 digitos.");	
 						flag=false;
 					}
+					
+					//Email no es @libreria.com
+					if (nuevo.ValidarEmail(nuevo.getEmail())==false) {
+						JOptionPane.showMessageDialog(null, "El email no es el de la libreria (@libreria.com).");
+						flag=false;
+					}
+					
+					//Email similar
+					for (Usuario existentes : usuariosExistentes) {
+							if (existentes.getEmail().equals(nuevo.getEmail())) {
+								JOptionPane.showMessageDialog(null, "Ya hay un usuario creado con este email, intenta de nuevo.");
+								flag=false;
+								break;
+		
+						}
+						
+					}
+					
+					if (flag==true) {
+						ControllerUsuario.AgregarUsuario(nuevo);
+					}
 				}
-				if (flag==true) {
-					ControllerUsuario.AgregarUsuario(nuevo);
-				}
+				
 			}
 	@Override
 	public String toString() {
