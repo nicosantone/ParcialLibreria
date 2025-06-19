@@ -1,4 +1,5 @@
 package BLL;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -80,7 +81,7 @@ public class Empleado extends Usuario implements Validacion {
 		String DNI = JOptionPane.showInputDialog("Insertar el DNI Del cliente (No funcional)");
 		
 		registro.setClienteDNI(DNI);
-		registro.setFecha(LocalDate.now());
+		registro.setFecha(Date.valueOf(LocalDate.now()));
 		registro.setTotal(LibroPrecio);
 		
 		

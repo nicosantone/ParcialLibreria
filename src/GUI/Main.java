@@ -8,6 +8,7 @@ import BLL.Usuario;
 import BLL.Venta;
 import REPOSITORY.Encriptador;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.LinkedList;
 public class Main {
@@ -17,7 +18,7 @@ public class Main {
 		LinkedList<Libro> libros = new LinkedList<>();
 		
 		
-		Venta venta = new Venta(LocalDate.now(), 0.0, "");
+		Venta venta = new Venta(Date.valueOf(LocalDate.now()), 0.0, "", "", "");
 		libros.add(new Libro(1, "Cien Años de Soledad", "Gabriel García Marquez", "Planeta", 30000.0, "Clasicos", true));
 		libros.add(new Libro(2, "Saga Harry Potter", "JK Rowling", "Bloomsbury Publishing", 100000.0, "Ficción", true));
 		libros.add(new Libro(3, "We Were Liars", "Emily Lockhart", "Blue Salamandra", 20000.0, "Romance juvenil", true));

@@ -46,7 +46,7 @@ public class sesion extends JFrame {
 		JButton btnNewButton_1 = new JButton("Ver libros");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VistaLibros vista = new VistaLibros();
+				VistaLibros vista = new VistaLibros(usuario);
 				vista.setVisible(true);
 				dispose();
 			}

@@ -1,20 +1,25 @@
 package BLL;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class Venta {
-	private LocalDate Fecha;
+	private Date Fecha;
 	private double Total;
 	private String ClienteDNI;
-	public Venta(LocalDate fecha, double total, String clienteDNI) {
+	private String LibroVendido;
+	private String Empleado;
+	public Venta(Date fecha, double total, String clienteDNI, String libroVendido, String empleado) {
 		super();
 		Fecha = fecha;
-		this.Total = total;
+		Total = total;
 		ClienteDNI = clienteDNI;
+		LibroVendido = libroVendido;
+		Empleado = empleado;
 	}
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return Fecha;
 	}
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		Fecha = fecha;
 	}
 	public double getTotal() {
@@ -28,6 +33,19 @@ public class Venta {
 	}
 	public void setClienteDNI(String clienteDNI) {
 		ClienteDNI = clienteDNI;
+	}
+	
+	public String getLibroVendido() {
+		return LibroVendido;
+	}
+	public void setLibroVendido(String libroVendido) {
+		LibroVendido = libroVendido;
+	}
+	public String getEmpleado() {
+		return Empleado;
+	}
+	public void setEmpleado(String empleado) {
+		Empleado = empleado;
 	}
 	@Override
 	public String toString() {

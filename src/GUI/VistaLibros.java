@@ -26,7 +26,7 @@ public class VistaLibros extends JFrame {
 
   
 
-    public VistaLibros() {
+    public VistaLibros(Usuario usuario) {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 800, 500);
         contentPane = new JPanel();
@@ -116,6 +116,19 @@ public class VistaLibros extends JFrame {
         });
         btnLimpia.setBounds(560, 384, 111, 40);
         contentPane.add(btnLimpia);
+        
+        JButton BotonVender = new JButton("Vender");
+        BotonVender.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showMessageDialog(null, libroSeleccionado.getNombre());
+        		VenderLibro vista = new VenderLibro(libroSeleccionado, usuario);
+				vista.setVisible(true);
+				dispose();
+        		
+        	}
+        });
+        BotonVender.setBounds(170, 326, 150, 40);
+        contentPane.add(BotonVender);
         // Cargar datos
         cargarTabla();
 
@@ -140,27 +153,5 @@ public class VistaLibros extends JFrame {
     		
         	}
     }
-//    }
-//    private void cargarTablaFILTRAR(String filtro) {
-//    	
-//    	
-//        model.setRowCount(0);
-//        LinkedList<Usuario> usuarios = DLLUsuario.mostrarUsuarios();
-//        for (Usuario usuario : usuarios) {
-//        	if(usuario.getNombre().toLowerCase().startsWith(
-//        			filtro.toLowerCase())
-//        			||
-//        			usuario.getNombre().contains(filtro)) {
-//            model.addRow(new Object[]{
-//            		usuario.getId(), 
-//            		usuario.getNombre(),
-//            		usuario.getEmail(), 
-//            		usuario.getTipo(),
-//            		usuario.getPassword()
-//            		}
-//            );
-//        	}
-//        }
-//    }
 }
 
