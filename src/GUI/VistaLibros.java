@@ -52,18 +52,34 @@ public class VistaLibros extends JFrame {
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(10, 40, 760, 200);
         contentPane.add(scrollPane);
+        
+        if(usuario.getTipo().contains("Gerente")) {
+        	
+        	JButton btnAgregar = new JButton("Agregar");
+            btnAgregar.setBounds(10, 270, 150, 40);
+            contentPane.add(btnAgregar);
+            btnAgregar.addActionListener(new ActionListener() {
+            	public void actionPerformed(ActionEvent e) {
+            		AgregarLibro vista = new AgregarLibro();
+            		vista.setVisible(true);
+					dispose();
+            		
+            		
+            	}
+            });
 
-        JButton btnAgregar = new JButton("Agregar");
-        btnAgregar.setBounds(10, 270, 150, 40);
-        contentPane.add(btnAgregar);
+            JButton btnEditar = new JButton("Editar");
+            btnEditar.setBounds(170, 270, 150, 40);
+            contentPane.add(btnEditar);
 
-        JButton btnEditar = new JButton("Editar");
-        btnEditar.setBounds(170, 270, 150, 40);
-        contentPane.add(btnEditar);
-
-        JButton btnEliminar = new JButton("Eliminar");
-        btnEliminar.setBounds(330, 270, 150, 40);
-        contentPane.add(btnEliminar);
+            JButton btnEliminar = new JButton("Eliminar");
+            btnEliminar.setBounds(330, 270, 150, 40);
+            contentPane.add(btnEliminar);
+        	
+        	
+        }
+        
+        
 
         // Acción al seleccionar fila
         table.getSelectionModel().addListSelectionListener(e -> {

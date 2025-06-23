@@ -31,18 +31,22 @@ public class sesion extends JFrame {
 		lblNewLabel.setBounds(10, 11, 398, 14);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("ir a tabla");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		if(usuario.getTipo().contains("Gerente")) {
+			JButton btnNewButton = new JButton("Ver Usuarios");
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					VistaUsuarios vista = new VistaUsuarios(usuario);
+					vista.setVisible(true);
+					dispose();
+				}
+			});
+			btnNewButton.setBounds(10, 83, 108, 36);
+			contentPane.add(btnNewButton);
+
+			
+		}
 				
-				VistaUsuarios vista = new VistaUsuarios(usuario);
-				vista.setVisible(true);
-				dispose();
-			}
-		});
-		btnNewButton.setBounds(24, 171, 89, 23);
-		contentPane.add(btnNewButton);
-		
 		JButton btnNewButton_1 = new JButton("Ver libros");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -51,7 +55,15 @@ public class sesion extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton_1.setBounds(138, 171, 89, 23);
+		btnNewButton_1.setBounds(10, 36, 108, 36);
 		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Ver lista de ventas");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_2.setBounds(10, 130, 121, 44);
+		contentPane.add(btnNewButton_2);
 	}
 }

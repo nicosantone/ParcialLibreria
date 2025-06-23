@@ -1,5 +1,9 @@
 package BLL;
 
+import javax.swing.JOptionPane;
+
+import DLL.ControllerLibro;
+
 public class Libro {
 	private int id;
 	private String nombre;
@@ -81,6 +85,66 @@ public class Libro {
 	public void setDisponibilidad(boolean disponibilidad) {
 		this.disponibilidad = disponibilidad;
 	}
+	
+	 // Agregar libro
+    public void agregarLibro(Libro nuevo) {
+    	boolean flag = true;
+    	//Nombre
+    	if(nuevo.getNombre().isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "El campo nombre no puede estar vacio");
+    		flag=false;
+    	}
+    	
+    	
+    	
+    	//Autor
+    	if(nuevo.getAutor().isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "El campo autor no puede estar vacio");
+    		flag=false;
+    		
+    	}
+    	
+    	for (int i = 0; i < nuevo.getAutor().length(); i++) {
+    		if( Character.isDigit(nuevo.getAutor().charAt(i))) {
+    			JOptionPane.showMessageDialog(null, "El autor no puede contener numeros.");
+    			flag=false;
+    			break;
+    		}
+			
+		}
+    	
+    	//editorial
+    	if(nuevo.getEditorial().isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "El campo editorial no puede estar vacio");
+    		flag=false;
+    	}
+    	
+    	//precio
+    	if(nuevo.getPrecio().equals(null)) {
+    		JOptionPane.showMessageDialog(null, "El campo precio no puede estar vacio");
+    		flag=false;
+    	}
+    	
+    	//categoria
+    	
+    	if(nuevo.getCategoria().isEmpty()) {
+    		JOptionPane.showMessageDialog(null, "El campo categoria no puede estar vacio");
+    		flag=false;
+    	}
+    	
+    	if (flag==true) {
+			ControllerLibro.AgregarLibro(nuevo);
+			JOptionPane.showMessageDialog(null, "Libro agregado correctamente.");
+		} else {
+			JOptionPane.showMessageDialog(null, "Intente de nuevo");
+		}
+
+
+      
+
+        
+    }
+
 	
 	@Override
 	public String toString() {

@@ -3,6 +3,8 @@ import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
+import DLL.ControllerLibro;
+
 public class Gerente extends Usuario {
 	private String area;
 	private double sueldo;
@@ -91,21 +93,62 @@ public class Gerente extends Usuario {
 		}
 
 	    // Agregar libro
-	    public void agregarLibro(LinkedList<Libro> libros) {
+	    public void agregarLibro(Libro nuevo) {
+	    	boolean flag = true;
+	    	//Nombre
+	    	if(nuevo.getNombre().isEmpty()) {
+	    		JOptionPane.showMessageDialog(null, "El campo nombre no puede estar vacio");
+	    		flag=false;
+	    	}
 	    	
-	    	int id = libros.getLast().getId() + 1;
-	        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del libro:");
-	        String autor = JOptionPane.showInputDialog("Ingrese el autor del libro:");
-	        String editorial = JOptionPane.showInputDialog("Ingrese la editorial:");
-	        double precio = Double.parseDouble(JOptionPane.showInputDialog("Ingrese el precio del libro:"));
-	        String categoria = JOptionPane.showInputDialog("Ingrese la categoría del libro:");
-	        String disponibleTexto = JOptionPane.showInputDialog("¿Está disponible? (si/no):");
-	        boolean disponibilidad = disponibleTexto.equalsIgnoreCase("si");
+	    	
+	    	
+	    	//Autor
+	    	if(nuevo.getAutor().isEmpty()) {
+	    		JOptionPane.showMessageDialog(null, "El campo autor no puede estar vacio");
+	    		flag=false;
+	    		
+	    	}
+	    	
+	    	for (int i = 0; i < nuevo.getAutor().length(); i++) {
+	    		if( Character.isDigit(nuevo.getAutor().charAt(i))) {
+	    			JOptionPane.showMessageDialog(null, "El autor no puede contener numeros.");
+	    			flag=false;
+	    			break;
+	    		}
+				
+			}
+	    	
+	    	//editorial
+	    	if(nuevo.getEditorial().isEmpty()) {
+	    		JOptionPane.showMessageDialog(null, "El campo editorial no puede estar vacio");
+	    		flag=false;
+	    	}
+	    	
+	    	//precio
+	    	if(nuevo.getPrecio().equals(null)) {
+	    		JOptionPane.showMessageDialog(null, "El campo precio no puede estar vacio");
+	    		flag=false;
+	    	}
+	    	
+	    	//categoria
+	    	
+	    	if(nuevo.getCategoria().isEmpty()) {
+	    		JOptionPane.showMessageDialog(null, "El campo categoria no puede estar vacio");
+	    		flag=false;
+	    	}
+	    	
+	    	if (flag==true) {
+				ControllerLibro.AgregarLibro(nuevo);
+				JOptionPane.showMessageDialog(null, "Libro agregado correctamente.");
+			} else {
+				JOptionPane.showMessageDialog(null, "Intente de nuevo");
+			}
+	
 
-	        Libro nuevoLibro = new Libro(id, nombre, autor, editorial, precio, categoria, disponibilidad);
-	        libros.add(nuevoLibro);
+	      
 
-	        JOptionPane.showMessageDialog(null, "Libro agregado correctamente.");
+	        
 	    }
 
 	    // Modificar precio
