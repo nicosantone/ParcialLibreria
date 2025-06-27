@@ -12,12 +12,15 @@ import BLL.Venta;
 import DLL.ControllerVenta;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.Iterator;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 
@@ -25,15 +28,14 @@ public class VenderLibro extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField DNI;
 
 	/**
 	 * Create the frame.
 	 */
 	public VenderLibro(Libro libro, Usuario usuario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 377, 290);
+		setBounds(100, 100, 295, 264);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -45,35 +47,59 @@ public class VenderLibro extends JFrame {
 		lblNewLabel.setBounds(0, 0, 351, 40);
 		contentPane.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(0, 91, 105, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		DNI = new JTextField();
+		DNI.setBounds(0, 91, 105, 20);
+		contentPane.add(DNI);
+		DNI.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("DNI del cliente");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel_1.setBounds(0, 71, 116, 14);
 		contentPane.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Confirmar con tu contraseña.");
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblNewLabel_1_1.setBounds(0, 122, 167, 14);
-		contentPane.add(lblNewLabel_1_1);
-		
 		JButton btnNewButton = new JButton("Vender");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Venta venta = new Venta(Date.valueOf(LocalDate.now()), libro.getPrecio(), lblNewLabel_1.getText(), libro.getNombre(), usuario.getNombre());
+				boolean flag=true;
+				String dni= DNI.getText();
+				
+				
+			
+				//DNI
+				if(dni.isEmpty()) {
+					flag=false;
+					JOptionPane.showMessageDialog(null, "DNI no puede estar vacio");
+				}else {
+					for (int i = 0; i < dni.length(); i++) {
+						if (Character.isLetter(dni.charAt(i))) {
+							flag=false;
+							JOptionPane.showMessageDialog(null, "Solo puedes poner numeros");
+							break;
+						}
+					}
+					if (flag==true && dni.length()!=8) {
+						flag=false;
+						JOptionPane.showMessageDialog(null, "Debe haber 8 numeros introducidos");
+					}
+				}
+				
+				
+				if(flag==true) {
+				Venta venta = new Venta(Date.valueOf(LocalDate.now()), libro.getPrecio(), dni, libro.getNombre(), usuario.getNombre());
 				
 				ControllerVenta.AgregarVenta(venta);
+				sesion vista = new sesion(usuario);
+				vista.setVisible(true);
+				dispose();
+				
+				}else {
+					JOptionPane.showMessageDialog(null, "error");
+					
+				}
 			}
 		});
-		btnNewButton.setBounds(0, 183, 105, 46);
+		btnNewButton.setBounds(0, 122, 105, 46);
 		contentPane.add(btnNewButton);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(0, 144, 105, 20);
-		contentPane.add(passwordField);
 		
 		JLabel lblNewLabel_2 = new JLabel("TOTAL: " + libro.getPrecio());
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));

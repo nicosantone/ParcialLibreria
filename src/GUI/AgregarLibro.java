@@ -101,18 +101,18 @@ public class AgregarLibro extends JFrame {
 		textField_3.setBounds(70, 111, 97, 20);
 		contentPane.add(textField_3);
 		
-		JLabel precio = new JLabel("Precio");
-		precio.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		precio.setBounds(192, 91, 70, 20);
-		contentPane.add(precio);
+		
+		
+		JSpinner Precio = new JSpinner();
+		Precio.setBounds(192, 111, 97, 20);
+		contentPane.add(Precio);
 		
 		JButton btnNewButton = new JButton("Agregar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				double PrecioConvertido = Double.valueOf(precio.getText());
-			
+				 double precioConvertido = Double.parseDouble(Precio.getValue().toString());
 				
-				Libro LibroNuevo = new Libro(0, name.getText(), author.getText(), editor.getText(), PrecioConvertido, categoria.getText(), true);
+				Libro LibroNuevo = new Libro(0, name.getText(), author.getText(), editor.getText(), precioConvertido , categoria.getText(), true);
 				
 				LibroNuevo.agregarLibro(LibroNuevo);
 				
@@ -122,8 +122,6 @@ public class AgregarLibro extends JFrame {
 		btnNewButton.setBounds(125, 154, 106, 42);
 		contentPane.add(btnNewButton);
 		
-		JSpinner Precio = new JSpinner();
-		Precio.setBounds(192, 111, 97, 20);
-		contentPane.add(Precio);
+		
 	}
 }

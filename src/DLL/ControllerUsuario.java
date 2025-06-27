@@ -22,7 +22,7 @@ public class ControllerUsuario {
 		try {
 			PreparedStatement stmt = con.prepareStatement("SELECT * FROM usuario WHERE email = ? AND contrasena = ?");
 			stmt.setString(1, mail);
-			stmt.setString(2, contraEncriptada);
+			stmt.setString(2, contra);
 
 			ResultSet rs = stmt.executeQuery();
 

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2025 a las 22:45:41
+-- Tiempo de generación: 27-06-2025 a las 23:01:21
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.1.25
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -69,9 +69,31 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `email`, `contrasena`, `dni`, `tipo`) VALUES
 (1, 'Greg', 'Gerg', 'Greg@libreria.ar', '1234', '78569345', 'Gerente'),
-(2, 'Gamaliel', 'Quiroz', 'ghami@gmail.com', 'defg', '1234', 'Empleado'),
-(3, 'Facundo', 'Husto', 'facu@gmail.com', 'defg', '1234', 'Gerente'),
-(4, 'Nicolas', 'Santone', 'nico@gmail.com', 'defg', '1234', 'Empleado');
+(2, 'Gamaliel', 'Quiroz', 'ghami@gmail.com', 'abcd', '1234', 'Empleado'),
+(3, 'Facundo', 'Husto', 'facu@gmail.com', 'abcd', '1234', 'Gerente'),
+(4, 'Nicolas', 'Santone', 'nico@gmail.com', 'abcd', '1234', 'Empleado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `venta`
+--
+
+CREATE TABLE `venta` (
+  `cliente_dni` varchar(255) NOT NULL,
+  `libro_vendido` varchar(255) NOT NULL,
+  `precio` double(255,0) NOT NULL,
+  `empleado` varchar(255) NOT NULL,
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `venta`
+--
+
+INSERT INTO `venta` (`cliente_dni`, `libro_vendido`, `precio`, `empleado`, `fecha`) VALUES
+('DNI del cliente', 'We Were Liars', 20000, 'Nicolas', '2025-06-27'),
+('12345678', 'Saga Harry Potter', 100000, 'Facundo', '2025-06-27');
 
 --
 -- Índices para tablas volcadas
@@ -103,7 +125,7 @@ ALTER TABLE `libro`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
