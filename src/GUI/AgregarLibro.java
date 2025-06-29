@@ -28,26 +28,8 @@ public class AgregarLibro extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AgregarLibro frame = new AgregarLibro();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public AgregarLibro() {
+	
+	public AgregarLibro(Usuario usuario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 393, 251);
 		contentPane = new JPanel();
@@ -121,6 +103,18 @@ public class AgregarLibro extends JFrame {
 		});
 		btnNewButton.setBounds(125, 154, 106, 42);
 		contentPane.add(btnNewButton);
+		
+		JButton Volver = new JButton("<-");
+		Volver.setBounds(0, 189, 89, 23);
+		contentPane.add(Volver);
+		Volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VistaLibros vista = new VistaLibros(usuario);
+				vista.setVisible(true);
+				dispose();
+				
+			}
+		});
 		
 		
 	}

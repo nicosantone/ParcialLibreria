@@ -31,7 +31,7 @@ public class sesion extends JFrame {
 		lblNewLabel.setBounds(10, 11, 398, 14);
 		contentPane.add(lblNewLabel);
 		
-		if(usuario.getTipo().contains("Gerente")) {
+		//if(usuario.getTipo().contains("Gerente")) {
 			JButton btnNewButton = new JButton("Ver Usuarios");
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -41,11 +41,11 @@ public class sesion extends JFrame {
 					dispose();
 				}
 			});
-			btnNewButton.setBounds(10, 83, 108, 36);
+			btnNewButton.setBounds(10, 134, 108, 36);
 			contentPane.add(btnNewButton);
 
 			
-		}
+		//}
 				
 		JButton btnNewButton_1 = new JButton("Ver libros");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -63,7 +63,18 @@ public class sesion extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2.setBounds(10, 130, 121, 44);
+		btnNewButton_2.setBounds(10, 79, 159, 44);
 		contentPane.add(btnNewButton_2);
+		
+		JButton Cerrar = new JButton("Cerrar Sesion");
+		Cerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PantallaPrincipal vista = new PantallaPrincipal();
+				vista.setVisible(true);
+				dispose();
+			}
+		});
+		Cerrar.setBounds(10, 206, 114, 44);
+		contentPane.add(Cerrar);
 	}
 }

@@ -60,7 +60,7 @@ public class VistaLibros extends JFrame {
             contentPane.add(btnAgregar);
             btnAgregar.addActionListener(new ActionListener() {
             	public void actionPerformed(ActionEvent e) {
-            		AgregarLibro vista = new AgregarLibro();
+            		AgregarLibro vista = new AgregarLibro(usuario);
             		vista.setVisible(true);
 					dispose();
             		
@@ -136,7 +136,7 @@ public class VistaLibros extends JFrame {
         JButton BotonVender = new JButton("Vender");
         BotonVender.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		JOptionPane.showMessageDialog(null, libroSeleccionado.getNombre());
+        		
         		VenderLibro vista = new VenderLibro(libroSeleccionado, usuario);
 				vista.setVisible(true);
 				dispose();
@@ -145,6 +145,21 @@ public class VistaLibros extends JFrame {
         });
         BotonVender.setBounds(170, 326, 150, 40);
         contentPane.add(BotonVender);
+        
+        JButton Volver = new JButton("<-");
+        Volver.setBounds(0, 421, 178, 40);
+        contentPane.add(Volver);
+        Volver.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		sesion vista = new sesion(usuario);
+				vista.setVisible(true);
+				dispose();
+        		
+        	}
+        });
+        
+        
         // Cargar datos
         cargarTabla();
 

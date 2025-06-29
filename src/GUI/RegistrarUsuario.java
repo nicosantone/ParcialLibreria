@@ -128,5 +128,18 @@ public class RegistrarUsuario extends JFrame {
 		emailUsuario.setBounds(199, 135, 165, 20);
 		contentPane.add(emailUsuario);
 		emailUsuario.setColumns(10);
+		
+		JButton BotonVolver = new JButton("<-");
+		BotonVolver.setBounds(0, 258, 89, 23);
+		contentPane.add(BotonVolver);
+		BotonVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PantallaPrincipal vista = new PantallaPrincipal();
+				vista.setVisible(true);
+				dispose();
+				
+			}
+		});
+		
 	}
 }

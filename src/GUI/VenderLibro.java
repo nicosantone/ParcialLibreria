@@ -105,5 +105,17 @@ public class VenderLibro extends JFrame {
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblNewLabel_2.setBounds(0, 40, 182, 20);
 		contentPane.add(lblNewLabel_2);
+		
+		JButton Volver = new JButton("<-");
+		Volver.setBounds(0, 202, 89, 23);
+		contentPane.add(Volver);
+		Volver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VistaLibros vista = new VistaLibros(usuario);
+				vista.setVisible(true);
+				dispose();
+				
+			}
+		});
 	}
 }

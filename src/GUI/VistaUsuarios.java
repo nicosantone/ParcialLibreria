@@ -103,6 +103,24 @@ public class VistaUsuarios extends JFrame {
         });
         btnLimpia.setBounds(560, 384, 111, 40);
         contentPane.add(btnLimpia);
+        
+        JButton Volver = new JButton("<-");
+        Volver.setBounds(0, 421, 178, 40);
+        contentPane.add(Volver);
+        Volver.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        		sesion vista = new sesion(usuario);
+				vista.setVisible(true);
+				dispose();
+        		
+        	}
+        });
+        
+        
+        
+        
+        
         // Cargar datos
         cargarTabla();
 
