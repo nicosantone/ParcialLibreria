@@ -1,5 +1,6 @@
 package GUI;
 
+import BLL.Libro;
 import javax.swing.*;
 import java.awt.event.*;
 import DLL.ControllerLibro;
@@ -79,7 +80,8 @@ public class AgregarLibro extends JFrame {
 					//stock = Integer.parseInt(txtStock.getText());
 
 					//ControllerLibro controller = new ControllerLibro();
-					ControllerLibro.AgregarLibro(titulo, autor, editorial, precio, categoria, disponibilidad);
+					Libro nuevoLibro = new Libro(0, titulo, autor, editorial, precio, categoria, disponibilidad);
+					ControllerLibro.AgregarLibro(nuevoLibro);
 
 					JOptionPane.showMessageDialog(null, "Libro agregado con éxito.");
 					dispose(); // cerrar ventana
