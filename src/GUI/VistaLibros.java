@@ -136,10 +136,14 @@ public class VistaLibros extends JFrame {
         JButton BotonVender = new JButton("Vender");
         BotonVender.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		if (libroSeleccionado.isDisponibilidad()==false) {
+					JOptionPane.showMessageDialog(null, "Libro no disponible");
+				} else {
+					VenderLibro vista = new VenderLibro(libroSeleccionado, usuario);
+					vista.setVisible(true);
+					dispose();
+				}
         		
-        		VenderLibro vista = new VenderLibro(libroSeleccionado, usuario);
-				vista.setVisible(true);
-				dispose();
         		
         	}
         });

@@ -88,6 +88,7 @@ public class VenderLibro extends JFrame {
 				Venta venta = new Venta(Date.valueOf(LocalDate.now()), libro.getPrecio(), dni, libro.getNombre(), usuario.getNombre());
 				
 				ControllerVenta.AgregarVenta(venta);
+				libro.setDisponibilidad(false);
 				sesion vista = new sesion(usuario);
 				vista.setVisible(true);
 				dispose();

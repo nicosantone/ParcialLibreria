@@ -165,6 +165,17 @@ public class Usuario implements Encriptador, Validacion {
 						
 					}
 					
+					//DNI IDENTICO
+					for (Usuario existentes : usuariosExistentes) {
+						if (existentes.getDni().equals(nuevo.getDni())) {
+							JOptionPane.showMessageDialog(null, "Ya hay un usuario creado con este DNI, intenta de nuevo.");
+							flag=false;
+							break;
+	
+					}
+					
+				}
+					
 					if (flag==true) {
 						ControllerUsuario.AgregarUsuario(nuevo);
 					}

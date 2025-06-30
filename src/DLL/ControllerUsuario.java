@@ -85,6 +85,7 @@ public class ControllerUsuario {
 			int filas = statement.executeUpdate();
 			if (filas > 0) {
 				System.out.println("Usuario agregado correctamente.");
+				JOptionPane.showMessageDialog(null, "Usuario agregado correctamente");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
